@@ -1,0 +1,275 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 16, 2018, 9:27:58 PM
+    Author     : Hayami
+*/
+
+* {box-sizing: border-box;}
+body {color:#140e12;
+	background-color: #adadad;
+	padding: 0;
+	font-family: Arial;}
+	
+/*Scale Images not explicitly set to display none when resizing*/
+img {max-width: 100%;
+    height: auto;}
+	
+header {background-color:#541f1c;
+	color:#ffffff;
+	font-family:Tahoma;
+	font-size:24px;
+	margin-bottom: 0;
+	background-image: url(images/header.gif);
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: 145px;}
+
+nav {background: #79766f;
+	width: 100%;
+	height: 35px;
+	padding: 0.01em 0 0.75em 0;
+	border-bottom: 1px solid #4d4a45;
+	border-top: 1px solid #4d4a45;}
+nav a {	display: inline;
+		text-decoration:none;
+		text-align: center;
+		font-family: Arial;
+		font-size: 20px;
+		padding: 0.45em 1em 0.20em;
+		margin-bottom: 1em;
+		text-shadow: 2px 2px #4d4a45}
+nav ul {	list-style-type: none;
+		padding-left: 0;
+		margin-top: 0.5em;}
+nav li {display: inline;}
+nav a:link {color: #ffffff;}
+nav a:visited {color: #ffffff;}
+nav a:hover {color: #ffffff;
+			background-color: #4d4a45;}
+
+/*Mobile Menu Toggle*/
+.mobilenav {background-color: #4d4a45;
+			overflow: hidden;
+			display: none; }
+.mobilenav a {float: left;
+			display: block;
+			color: #f2f2f2;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px; }
+.mobilenav a:hover {background-color: #4d4a45;
+					color: white;}
+.mobilenav .icon {display: none; }
+
+/*Dropdown Nav*/
+.dropbtn {display: inline-block;
+		color: white;
+		text-align: center;
+		padding: 0.45em 1em 0.15em;
+		margin-top: -0.5em;
+		margin-bottom: 0;
+		text-decoration: none;
+		font-size: 20px; }
+
+.dropdown:hover .dropbtn {background-color: #4d4a45;
+						margin-bottom: 0;
+						margin-top: -0.5em; }
+
+li.dropdown {display: inline-block; }
+
+.dropdown-content {display: none;
+				position: absolute;
+				background-color: #79766f;
+				min-width: 141px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1; }
+
+.dropdown-content a {color: white;
+					font-size: 12pt;
+					padding: 0.45em 1em 0.15em;
+					text-decoration: none;
+					margin: 0;
+					display: block;
+					text-align: center; }
+
+.dropdown-content a:hover {background-color: #4d4a45;
+							margin: 0;}
+
+.dropdown:hover .dropdown-content {display: block;}
+	
+header h1 {text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-top: 0;
+	padding-top: 0;}
+main {font-family:Tahoma;
+	font-size:16px;}
+	
+footer {background-color:#79766f;
+	color:#ffffff;
+	font-style:italic;
+	text-align:center;
+	width: 100%;
+	padding: 0.5em 0 0.5em 0;
+	margin-top: 0;
+	border-top: 1px solid #4d4a45;
+	border-bottom: 1px solid #4d4a45;}
+	
+footer ul {	list-style-type: none;
+		padding: 0.15em 0.5em 0.5em 0.5em;
+		margin: 0 0.5em 0.5em 0.5em;}
+footer li {	display: inline;
+		padding: 0 1em 0 1em;
+		font-size: 16px;
+		font-family: Arial;}
+footer a {	text-decoration: none;
+		color: #ffffff;}
+/*Flex elements*/
+#flexbox {display: flex;
+		flex-direction: row;
+		justify-content:center;
+		flex-wrap: nowrap;
+		padding-top: 0;
+		padding-bottom: 0;}
+nav {flex: 1;
+	justify-content:center; 
+	order: -2;}
+.leftcolumn {flex: 4;
+			order: -1;
+			background-color: #f6f6f6;
+			padding: 0 1em;
+			flex-wrap: wrap;
+			text-align: left;
+			font-size: 14px;}
+.leftcolumn a {text-decoration: none;}
+.leftcolumn h3 {text-align: center;
+				font-family: Arial;
+				}
+/*.leftcolumn img {padding: 40% 30% 5%;}	Most likely going to localize img properties*/
+.center {flex: 7;
+	order: 0;
+	background-color: #ffffff;
+	padding:  0 1em;
+	flex-wrap: wrap;
+	text-align: left;}
+.center a {text-decoration: none;}
+/*.center img {padding: 10% 35% 5%;}	Most likely going to localize img properties*/
+.center h2 {text-align: center;
+			font-weight: normal;
+			font-family: Arial;
+			font-size: 20pt;}
+.rightcolumn {flex: 4;
+	order: 1;
+	background-color: #f6f6f6;
+	padding:  0 1em;
+	flex-wrap: wrap;
+	text-align: left;
+	font-size: 14px;}
+.rightcolumn a {text-decoration: none;}
+.rightcolumn h3 {text-align: center;
+				font-family: Arial;
+				}
+/*.rightcolumn img {padding: 40% 30% 5%;}	Most likely going to localize img properties*/
+/*Classes*/
+.mobile {display: none; text-decoration: none;}
+.desktop {display: inline; text-decoration: none;}
+.splashSlide {display: none;}
+/*W3 schools animations tutorial*/
+.animate-opacity {animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+/*IDs*/
+#wrapper {	background-color:#ffffff; 
+			min-width:768px; 
+			max-width:1024px;
+			margin-right: auto; 
+			margin-left: auto;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+#breadcrumb {width: 50%;}
+/*Scroll to Top button*/
+#toTop {display: none;
+		position: fixed;
+		bottom: 20px;
+		right: 30px;
+		z-index: 99;
+		border: none;
+		outline: none;
+		background-color: #c86160;
+		color: white;
+		cursor: pointer;
+		padding: 16px 8px;
+		border-radius: 50%;
+		box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5); }
+#toTop:hover {background-color: #4d4a45; }
+
+/*Media Queries
+Tablet Query*/
+@media only screen and (max-width: 1024px) {
+	body {padding: 0;}
+}
+
+/*Smartphone/small tablet Query*/
+@media only all and (max-width: 768px) {
+	body {padding: 0;
+		margin: 0;}
+	h1 {font-size: 2em; padding-top: 0.25em;
+	   padding-left: 1.5em; width: 85%; text-align: center;}
+	.mobilenav {display: block;}
+	.mobilenav a {font-size: 10pt;}
+	.mobilenav a.icon { display: none;}
+	.mobilenav.responsive {position: relative;}
+	.mobilenav.responsive a.icon { position: absolute;
+								right: 0;
+								top: 0;}
+	.mobilenav.responsive a { float: none;
+							display: block;
+							text-align: left;}
+	nav { display: none; width: auto; height:auto; position: static;}
+	/*nav ul { display: flex; flex-direction: column; text-align:center; font-size: 6pt;} //Saved in case need to revert.
+	nav li {display:block; padding: 0.5em;}
+	nav a {padding: 0.25em; width: 45%; min-width: 6em;}
+	nav a:hover {padding: 0.25em; background-color: transparent;}
+	.dropdown:hover .dropbtn { background-color:transparent}
+	.dropdown .dropbtn {padding: 0.5em;}
+	.dropdown-content { display: inline; position: static; width: auto; box-shadow: none}
+	.dropdown-content li { display: inline}
+	.dropdown-content a {padding: 0.25em 0.25em 0.25em 22%; text-align: center;}
+	.dropdown-content a:hover {  background-color: transparent; padding: 0.25em 0.25em 0.25em 22%;}*/
+	main {padding-top: 0;}
+	#wrapper {max-width: 768px;
+			min-width: 360px;
+			margin: 0;
+			box-shadow: none;}
+	#flexbox { overflow: visible;
+			height: auto;
+			flex-direction: column;}
+	.leftcolumn {order: 0;}
+	.center {order: -1;}
+	.rightcolumn {order: 1;}
+	footer {padding: 0.5em; margin: 0; font-size: 10pt;}
+	footer ul{padding-top: 0;
+			margin-top: 0;}
+	footer li {display:inline-block;
+			padding: 0 1em 1em 1em;}
+	.mobile {display: inline;}
+	.desktop {display: none;}
+}
+
+/*Smartphone (iPhone 6S/Nexus 6p and other large phones)*/
+@media only all and (max-width: 736px)	{
+	.mobilenav a:not(:first-child) {display: none;}
+	.mobilenav {display: block;}
+	.mobilenav a {font-size: 17px;}
+	.mobilenav a.icon { float: right; 
+					display: block;}
+	.mobilenav.responsive {position: relative;}
+	.mobilenav.responsive a.icon { position: absolute;
+								right: 0;
+								top: 0;}
+	.mobilenav.responsive a { float: none;
+							display: block;
+							text-align: left;}
+}

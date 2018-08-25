@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>(TOBA) User Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../styles/toba.css" rel="stylesheet">
+        <style>
+            form {padding: 0.5em 1em;}
+            label { float: left;
+	    width: 90px; 
+            clear: left;
+	    text-align: left; 
+	    padding-right: 10px;
+	    margin-top: 10px; }
+            input { margin-top: 10px; 
+                  display: block; } 
+            .button {
+                margin-left: 90px;
+                display: inline-block;
+                width: 173px; }
+        </style>
+    </head>
+    <body>
+        <section id="wrapper">
+        <section style="background-color: #14577b">
+            <img class="banner" src="../img/titan.png" alt="Titan Online Banking">
+        </section>
+        <nav role="navigation">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="New_customer.jsp">Sign Up</a></li>
+            <li><a href="Login.html">Login</a></li>
+        </ul>
+        </nav>
+        <section id="flexbox">
+        <main class="center">
+            <form action="login" method="post">
+                <input type="hidden" name="action" value="userlog"/>
+                <label for="userName">Username:</label>
+                <input type="text" name="userName" /><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" />
+                <input type="submit" class="button" value="Login"/>
+            </form>
+        <section>
+            <p><strong>New to TOBA?</strong>&nbsp;<a href="New_customer.jsp">Register</a> for online banking services.</p>
+        </section>
+        </main>
+        </section>
+        <footer>
+        <span>&copy; Titan Online Banking</span>
+        </footer>
+        </section>
+    </body>
+</html>
