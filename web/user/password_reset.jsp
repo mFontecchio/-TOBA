@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>(TOBA) User Login</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/TOBA/styles/toba.css" rel="stylesheet">
-        <style>
+<%-- 
+    Document   : password_reset
+    Created on : Sep 2, 2018, 1:43:53 PM
+    Author     : mFontecchio
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+        <!--<style>
             form {padding: 0.5em 1em;}
             label { float: left;
 	    width: 90px; 
@@ -24,9 +19,9 @@ and open the template in the editor.
                 margin-left: 90px;
                 display: inline-block;
                 width: 173px; }
-        </style>
-    </head>
-    <body>
+        </style>-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/header.html" />
         <section id="wrapper">
         <section style="background-color: #14577b">
             <img class="banner" src="../img/titan.png" alt="Titan Online Banking">
@@ -41,12 +36,10 @@ and open the template in the editor.
         <section id="flexbox">
         <main class="center">
             <form action="login" method="post">
-                <input type="hidden" name="action" value="userlog"/>
-                <label for="userName">Username:</label>
-                <input type="text" name="userName" /><br>
-                <label for="password">Password:</label>
-                <input type="password" name="password" />
-                <input type="submit" class="button" value="Login"/>
+                <input type="hidden" name="action" value="reset"/>
+                <label for="newPassword">New Password</label>
+                <input type="password" name="newPassword" />
+                <input type="submit" class="button" value="Change Password"/>
             </form>
         <section>
             <a href="password_reset.jsp">Reset Password</a>
@@ -54,9 +47,4 @@ and open the template in the editor.
         </section>
         </main>
         </section>
-        <footer>
-        <span>&copy; Titan Online Banking</span>
-        </footer>
-        </section>
-    </body>
-</html>
+<c:import url="/footer.jsp" />

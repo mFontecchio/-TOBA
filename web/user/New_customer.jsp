@@ -6,27 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../styles/toba.css" rel="stylesheet">
-        <style>
-            form {padding: 0.5em 1em;}
-            label { float: left;
-	    width: 90px; 
-            clear: left;
-	    text-align: left; 
-	    padding-right: 10px;
-	    margin-top: 10px; }
-            input { margin-top: 10px; 
-                  display: block; } 
-            .button {
-                margin-left: 100px;
-            }
-        </style>
-        <title>(TOBA) Register</title>
-    </head>
-    <body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/header.html" />
         <section id="wrapper">
         <section style="background-color: #14577b">
             <img class="banner" src="../img/titan.png" alt="Titan Online Banking">
@@ -65,9 +46,4 @@
         </form>
         </main>
     </section>
-    <footer>
-        <span>&copy; Titan Online Banking</span>
-    </footer>
-        </section>
-    </body>
-</html>
+<c:import url="/footer.jsp" />

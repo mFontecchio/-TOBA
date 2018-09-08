@@ -17,6 +17,19 @@ body {color:#140e12;
 /*Scale Images not explicitly set to display none when resizing*/
 img {max-width: 100%;
     height: auto;}
+
+form {padding: 0.5em 1em;}
+label { float: left;
+	width: 90px; 
+        clear: left;
+	text-align: left; 
+	padding-right: 10px;
+	margin-top: 10px; }
+
+input { margin-top: 10px; 
+        display: block; } 
+.button {
+        margin-left: 100px;}
 	
 header {background-color:#541f1c;
 	color:#ffffff;
@@ -178,9 +191,6 @@ nav {flex: 1;
 /*Classes*/
 .mobile {display: none; text-decoration: none;}
 .desktop {display: inline; text-decoration: none;}
-.splashSlide {display: none;}
-/*W3 schools animations tutorial*/
-.animate-opacity {animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
 /*IDs*/
 #wrapper {	background-color:#ffffff; 
 			min-width:768px; 

@@ -20,6 +20,7 @@ public class User implements Serializable {
     private String state;
     private String zipCode;
     private String email;
+    private String userName;
     private String password;
     
     public User() {
@@ -36,6 +37,15 @@ public class User implements Serializable {
         this.state = state;
         this.zipCode = zipCode;
         this.email = email;
+        
+        //UserName assigned for each user. Last+Zip
+        this.userName = lastName + zipCode;
+        //default password given to all users.
+        this.password = "welcome1";
+    }
+    
+    public String getUserName(){
+        return userName;
     }
     //Only method to have a setter in which the password can be changed as needed.
     public String getPassword() {

@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import toba.user.User;
 
 /**
  *
@@ -48,11 +50,20 @@ public class LoginServlet extends HttpServlet {
             //when working with the DB. For now we will keep it simple but this
             //will be a seperate validator method later.
             if (userName.equals("jsmith@toba.com") && password.equals("letmein")) {
-                url = "/user/Account_activity.html";
+                url = "/user/Account_activity.jsp";
             }
             else {
                 url = "/user/Login_failure.html";
             }
+        }
+        else if (action.equals("reset")) {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            String newPassword = request.getParameter("newPassword");
+            user.setPassword(newPassword);
+            
+            session.setAttribute("user", user);
+            url = "/user/Account_activity.jsp";
         }
         getServletContext()
                 .getRequestDispatcher(url)

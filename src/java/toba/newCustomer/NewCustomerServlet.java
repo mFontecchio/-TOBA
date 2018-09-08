@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import toba.user.User;
 
 /**
@@ -31,7 +32,7 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/userNew_customer.jsp";
+        String url = "/user/New_customer.jsp";
         ArrayList<String> formData = new ArrayList<>();
         
         String action = request.getParameter("action");
@@ -64,7 +65,9 @@ public class NewCustomerServlet extends HttpServlet {
             //All fields complete
             else {
                 message = "";
-                url = "/user/Success.html";
+                url = "/user/Success.jsp";
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
             }
             request.setAttribute("message", message);
         }
