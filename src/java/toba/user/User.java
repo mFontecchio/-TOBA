@@ -6,12 +6,20 @@
 package toba.user;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author mFontecchio
  */
+@Entity
 public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -42,6 +50,13 @@ public class User implements Serializable {
         this.userName = lastName + zipCode;
         //default password given to all users.
         this.password = "welcome1";
+    }
+    
+    public long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
     
     public String getUserName(){

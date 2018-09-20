@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.user.User;
+import toba.userDB.UserDB;
 
 /**
  *
@@ -66,6 +67,7 @@ public class NewCustomerServlet extends HttpServlet {
             else {
                 message = "";
                 url = "/user/Success.jsp";
+                UserDB.insert(user);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
             }

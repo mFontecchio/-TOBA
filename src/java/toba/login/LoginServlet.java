@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.user.User;
+import toba.userDB.UserDB;
 
 /**
  *
@@ -49,7 +50,12 @@ public class LoginServlet extends HttpServlet {
             //Username and password compare. This will be vastly different
             //when working with the DB. For now we will keep it simple but this
             //will be a seperate validator method later.
-            if (userName.equals("jsmith@toba.com") && password.equals("letmein")) {
+            User user = UserDB.selectUser(userName, password);
+            
+            
+            if (userName.equals (user.getUserName()) && password.equals(user.getPassword())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 url = "/user/Account_activity.jsp";
             }
             else {
@@ -63,6 +69,7 @@ public class LoginServlet extends HttpServlet {
             user.setPassword(newPassword);
             
             session.setAttribute("user", user);
+            UserDB.update(user);
             url = "/user/Account_activity.jsp";
         }
         getServletContext()

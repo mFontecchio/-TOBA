@@ -37,8 +37,8 @@
         <main class="center">
             <form action="login" method="post">
                 <input type="hidden" name="action" value="reset"/>
-                <label for="newPassword">New Password</label>
-                <input type="password" name="newPassword" />
+                <label for="newPassword">New Password (must be 8 characters)</label>
+                <input type="password" name="newPassword" length="8" />
                 <input type="submit" class="button" value="Change Password"/>
             </form>
         <section>
