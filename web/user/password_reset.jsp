@@ -30,6 +30,7 @@
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="New_customer.jsp">Sign Up</a></li>
+            <li><a href="Account_activity.jsp">Account</a></li>
             <li><a href="Login.html">Login</a></li>
         </ul>
         </nav>

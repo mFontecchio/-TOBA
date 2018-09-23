@@ -10,12 +10,8 @@
     </servlet>
     <servlet>
         <servlet-name>TransactionServlet</servlet-name>
-        <servlet-class>toba.transaction.TransactionServlet</servlet-class>
+        <servlet-class>toba.transactionServlet.TransactionServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>TransactionServlet</servlet-name>
-        <url-pattern>/transaction</url-pattern>
-    </servlet-mapping>
     <error-page>
         <error-code>404</error-code>
         <location>/Error_404.jsp</location>
@@ -31,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>NewCustomerServlet</servlet-name>
         <url-pattern>/user/new</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransactionServlet</servlet-name>
+        <url-pattern>/user/transaction</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

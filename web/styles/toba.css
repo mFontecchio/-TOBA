@@ -114,7 +114,23 @@ li.dropdown {display: inline-block; }
 							margin: 0;}
 
 .dropdown:hover .dropdown-content {display: block;}
-	
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 header h1 {text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;

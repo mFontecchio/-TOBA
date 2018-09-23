@@ -6,12 +6,16 @@
 package toba.login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.account.Account;
+import toba.accountDB.AccountDB;
+import toba.transaction.Transaction;
+import toba.transactionDB.TransactionDB;
 import toba.user.User;
 import toba.userDB.UserDB;
 
@@ -47,18 +51,26 @@ public class LoginServlet extends HttpServlet {
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
             
-            //Username and password compare. This will be vastly different
-            //when working with the DB. For now we will keep it simple but this
-            //will be a seperate validator method later.
-            User user = UserDB.selectUser(userName, password);
+            /*EH for user login, this is done to redirect to login failure
+            instead of the default error page*/
+            try {
+                User user = UserDB.selectUser(userName, password);
+                Account account = AccountDB.selectAccount(user);
+                List<Transaction> transactions = TransactionDB.selectTransactions(account);
             
             
-            if (userName.equals (user.getUserName()) && password.equals(user.getPassword())) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                url = "/user/Account_activity.jsp";
-            }
-            else {
+                if (userName.equals (user.getUserName()) && password.equals(user.getPassword())) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", user);
+                    session.setAttribute("account", account);
+                    session.setAttribute("transactions", transactions);
+                    url = "/user/Account_activity.jsp";
+                }
+                else {
+                    url = "/user/Login_failure.html";
+                }
+                
+            } catch(Exception e) {
                 url = "/user/Login_failure.html";
             }
         }

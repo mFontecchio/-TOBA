@@ -23,6 +23,53 @@
             <h2>Account Activity</h2>
             <c:if test="${user != null}">
                 <p>Welcome back <c:out value="${user.firstName} ${user.lastName}"  /></p>
+                <a href="/TOBA/user/Account_transactions.jsp">Add Funds</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account #</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><c:out value="${account.accountId}" /></td>
+                            <td><c:out value="$${account.balance}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <c:if test="${transactions != null}">
+                    <br>    
+                <table border="1">
+                    <thead>
+                    <tr>
+                        <th>Transaction #</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                <c:forEach var="transaction" items="${transactions}">
+                    <tbody>
+                    <tr>
+                        <td><c:out value="${transaction.transactionId}" /></td>
+                        <td><c:out value="${transaction.transactionDate}" /></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${transaction.credit == false}">
+                                    -
+                                </c:when>
+                                <c:when test="${transaction.credit == true}">
+                                    +
+                                </c:when>
+                            </c:choose>
+                        </td>
+                        <td><c:out value="$${transaction.amount}" /></td>
+                    </tr>
+                    </tbody>
+                </c:forEach>
+                </table>
+                </c:if>
             </c:if>
             <c:if test="${user == null}">
                 <p>Not Logged In</p>

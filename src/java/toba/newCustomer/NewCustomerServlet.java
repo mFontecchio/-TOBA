@@ -6,13 +6,15 @@
 package toba.newCustomer;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.account.Account;
+import toba.accountDB.AccountDB;
 import toba.user.User;
 import toba.userDB.UserDB;
 
@@ -35,6 +37,7 @@ public class NewCustomerServlet extends HttpServlet {
         
         String url = "/user/New_customer.jsp";
         ArrayList<String> formData = new ArrayList<>();
+        BigDecimal startingBalance = new BigDecimal("25.00");
         
         String action = request.getParameter("action");
         if (action==null) {
@@ -51,9 +54,11 @@ public class NewCustomerServlet extends HttpServlet {
             formData.add(request.getParameter("zipCode"));
             formData.add(request.getParameter("email"));
             
-           
+           //Create user and account objects
             User user = new User(formData.get(0), formData.get(1), formData.get(2), formData.get(3), formData.get(4), 
                     formData.get(5), formData.get(6), formData.get(7));
+            
+            Account account = new Account(user, startingBalance);
             
             String message;
             
@@ -68,8 +73,10 @@ public class NewCustomerServlet extends HttpServlet {
                 message = "";
                 url = "/user/Success.jsp";
                 UserDB.insert(user);
+                AccountDB.insert(account);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
+                session.setAttribute("account", account);
             }
             request.setAttribute("message", message);
         }
