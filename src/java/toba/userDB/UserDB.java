@@ -38,6 +38,24 @@ public class UserDB {
         }
         return user;
     }
+        //Username only
+        public static User selectUser(String userName) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM User u " +
+                "WHERE u.userName = :userName";
+        TypedQuery<User> q = em.createQuery(qString, User.class);
+        q.setParameter("userName", userName);
+        
+        User user = null;
+        try {
+            user = q.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        return user;
+    }
     
     //Insert Method
     public static void insert(User user) {

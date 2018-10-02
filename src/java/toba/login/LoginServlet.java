@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.account.Account;
 import toba.accountDB.AccountDB;
+import toba.passwordUtil.PasswordUtil;
 import toba.transaction.Transaction;
 import toba.transactionDB.TransactionDB;
 import toba.user.User;
@@ -51,15 +52,22 @@ public class LoginServlet extends HttpServlet {
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
             
+            
+            
             /*EH for user login, this is done to redirect to login failure
             instead of the default error page*/
             try {
-                User user = UserDB.selectUser(userName, password);
+                //User user = UserDB.selectUser(userName, password);
+                User user = UserDB.selectUser(userName);
                 Account account = AccountDB.selectAccount(user);
                 List<Transaction> transactions = TransactionDB.selectTransactions(account);
+                
+                //salt test
+                String saltedPass = password + user.getSalt();
+                String hashPass = PasswordUtil.hashPassword(saltedPass);
             
-            
-                if (userName.equals (user.getUserName()) && password.equals(user.getPassword())) {
+                // end salt test changed from password
+                if (userName.equals (user.getUserName()) && hashPass.equals(user.getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
                     session.setAttribute("account", account);
@@ -78,11 +86,20 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             String newPassword = request.getParameter("newPassword");
-            user.setPassword(newPassword);
             
-            session.setAttribute("user", user);
-            UserDB.update(user);
-            url = "/user/Account_activity.jsp";
+            try {
+                //
+                String saltedPass = newPassword + user.getSalt();
+                String hashPass = PasswordUtil.hashPassword(saltedPass);
+            //
+                user.setPassword(hashPass);
+            
+                session.setAttribute("user", user);
+                UserDB.update(user);
+                url = "/user/Account_activity.jsp";
+            } catch (Exception e) {
+                url = "/user/Login_failure.html";
+            }
         }
         getServletContext()
                 .getRequestDispatcher(url)

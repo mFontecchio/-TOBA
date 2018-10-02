@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Titan Online Banking Application</title>
+        <title>ADMIN login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/TOBA/styles/toba.css" rel="stylesheet">
@@ -14,7 +14,7 @@ and open the template in the editor.
     <body>
         <section id="wrapper">
         <section style="background-color: #14577b">
-            <img class="banner" src="img/titan.png" alt="Titan Online Banking">
+            <img class="banner" src="/TOBA/img/titan.png" alt="Titan Online Banking">
         </section>
     <nav role="navigation">
         <ul>
@@ -25,12 +25,19 @@ and open the template in the editor.
     </nav>
     <section id="flexbox">
     <main class="center">
-            <h2>Welcome to Titan Online Banking</h2>
+        <h1>Admin Login</h1>
+        <p>Please enter your username and password to continue</p>
+        <form action="j_security_check" method="post">
+            <label for="j_username">Username</label>
+            <input type="text" name="j_username">
+            <label for="j_password">Password</label>
+            <input type="password" name="j_password"><br>
+            <input type="submit" value="Login">
+        </form>
     </main>
     </section>
     <footer>
         <span>&copy; Titan Online Banking</span>
-        <div><a href="/TOBA/admin/reports.jsp">Administrator</a></div>
     </footer>
         </section>
     </body>

@@ -7,7 +7,10 @@ package toba.newCustomer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.account.Account;
 import toba.accountDB.AccountDB;
+import toba.passwordUtil.PasswordUtil;
 import toba.user.User;
 import toba.userDB.UserDB;
 
@@ -72,6 +76,14 @@ public class NewCustomerServlet extends HttpServlet {
             else {
                 message = "";
                 url = "/user/Success.jsp";
+                
+                String saltedPass = user.getPassword() + user.getSalt();
+                try {
+                    user.setPassword(PasswordUtil.hashPassword(saltedPass));
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(NewCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 UserDB.insert(user);
                 AccountDB.insert(account);
                 HttpSession session = request.getSession();

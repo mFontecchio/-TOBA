@@ -6,10 +6,14 @@
 package toba.user;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import toba.passwordUtil.PasswordUtil;
 
 /**
  *
@@ -30,6 +34,9 @@ public class User implements Serializable {
     private String email;
     private String userName;
     private String password;
+    private String salt;
+    @Temporal(TemporalType.DATE)
+    private Date registeredDate;
     
     public User() {
         
@@ -45,11 +52,13 @@ public class User implements Serializable {
         this.state = state;
         this.zipCode = zipCode;
         this.email = email;
+        this.registeredDate = new Date();
         
         //UserName assigned for each user. Last+Zip
         this.userName = lastName + zipCode;
         //default password given to all users.
         this.password = "welcome1";
+        this.salt = PasswordUtil.getSalt();
     }
     
     public long getUserId() {
@@ -102,6 +111,14 @@ public class User implements Serializable {
     
     public String getEmail() {
         return email;
+    }
+    
+    public String getSalt() {
+        return salt;
+    }
+    
+    public Date getRegisteredDate() {
+        return registeredDate;
     }
 }
 

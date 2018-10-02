@@ -119,6 +119,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    padding-bottom: 8px;
 }
 
 td, th {

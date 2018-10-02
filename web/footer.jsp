@@ -15,6 +15,7 @@
 %>
     <footer>
         <span>&copy; <%= date %> Titan Online Banking</span>
+        <div><a href="/TOBA/admin/reports.jsp">Administrator</a></div>
     </footer>
         </section>
     </body>
